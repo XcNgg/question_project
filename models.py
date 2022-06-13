@@ -9,8 +9,6 @@ import time
 from sqlalchemy.dialects.mysql import FLOAT
 
 
-
-
 # emial验证码存储模型
 class email_captcha(db.Model):
     __tablename__ = 'email_captcha'

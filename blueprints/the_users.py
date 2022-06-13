@@ -47,7 +47,6 @@ def regist():
             user_info = users_information(
                 username=username,
                 # 密码哈希存储
-
                 password=generate_password_hash(password),
                 email=email,
             )
@@ -57,7 +56,7 @@ def regist():
             return redirect(url_for("the_users.login"))
         # 如果验证不通过1
         else:
-            print("ERROR")
+            print("validate ERROR".upper())
             return redirect(url_for('the_users.regist'))
 
 
@@ -89,10 +88,8 @@ def send_email():
             )
             # 打印验证码
             # print(captcha)
-
             # 发送邮件
             mail.send(message)
-
         except Exception as e:
             print(e)
             return '发送失败'
@@ -107,10 +104,8 @@ def send_email():
             print(time.time())
             # 将验证码发送时间赋值模型
             email_captcha_model.send_time = int(time.time())
-
             # 设置超时时间
             email_captcha_model.valid_time = int(time.time()+300)
-
             # 提交模型到数据库
             db.session.commit()
         else:
@@ -118,10 +113,8 @@ def send_email():
             email_captcha_model = email_captcha()
             email_captcha_model.email = recipients
             email_captcha_model.captcha = captcha
-
             # 设置发送时间
             email_captcha_model.send_time = int(time.time())
-
             # 设置超时时间
             email_captcha_model.valid_time = int(time.time()+300)
             # 添加模型
