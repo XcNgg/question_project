@@ -5,6 +5,10 @@ models.py
 from datetime import datetime
 # from datetime import timedelta
 from project_extension import db
+import time
+from sqlalchemy.dialects.mysql import FLOAT
+
+
 
 
 # emial验证码存储模型
@@ -16,9 +20,9 @@ class email_captcha(db.Model):
     # 验证码不为空，且唯一
     captcha = db.Column(db.String(10),nullable=False,unique=True)
     # 验证码发送时间
-    send_time = db.Column(db.DateTime,nullable=False,default=datetime.now)
+    send_time = db.Column(db.Integer,nullable=False)
     # # 验证码有效时间
-    # valid_time = db.Column(db.DateTime,nullable=False,default=datetime.now+timedelta(minutes=5))
+    valid_time = db.Column(db.Integer,nullable=False)
 
 # 用户存储模型
 class users_information(db.Model):

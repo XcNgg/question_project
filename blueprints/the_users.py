@@ -2,6 +2,8 @@
 the_users.py
     用户管理的蓝图文件
 """
+import time
+
 from flask import Blueprint
 from flask import render_template
 from flask import redirect
@@ -97,22 +99,33 @@ def send_email():
 
         # 导入模型
         email_captcha_model = email_captcha.query.filter_by(email=recipients).first()
-        # print(email_captcha_model)
+
+        # 如果邮箱存在
         if email_captcha_model:
             # 将验证码赋值模型
             email_captcha_model.captcha = captcha
+            print(time.time())
             # 将验证码发送时间赋值模型
-            email_captcha_model.send_time = datetime.now()
+            email_captcha_model.send_time = int(time.time())
+
+            # 设置超时时间
+            email_captcha_model.valid_time = int(time.time()+300)
+
             # 提交模型到数据库
             db.session.commit()
         else:
             # 创建模型 赋值
             email_captcha_model = email_captcha()
             email_captcha_model.email = recipients
-
             email_captcha_model.captcha = captcha
+
+            # 设置发送时间
+            email_captcha_model.send_time = int(time.time())
+
+            # 设置超时时间
+            email_captcha_model.valid_time = int(time.time()+300)
             # 添加模型
             db.session.add(email_captcha_model)
             # 提交模型到数据库
             db.session.commit()
-        return 'Scuccess'
+        return 'Send captcha Scuccess!'
