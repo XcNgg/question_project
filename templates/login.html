@@ -1,0 +1,40 @@
+{%  extends "base.html" %}
+{%  block title %} 登 录 {%  endblock %}
+
+{%  block body %}
+    <div class="row">
+        <div class="col-sm">
+            <!--美化占位-->
+        </div>
+
+        <div class="col-sm mt-5">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">邮 箱</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入您的邮箱" >
+{#                    <small id="emailHelp" class="form-text text-muted">为全面保护您的隐私，您的邮箱仅供本站登录使用</small>#}
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">密 码</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入您的密码">
+{#                    <small id="emailHelp" class="form-text text-muted"></small>#}
+                </div>
+                <div class="form-group mb-4">
+                </div>
+
+{#                <div class="form-group form-check">#}
+{#                    <input type="checkbox" class="form-check-input" id="exampleCheck1">#}
+{#                    <label class="form-check-label" for="exampleCheck1">Check me out</label>#}
+{#                </div>#}
+
+                <button type="submit" class="btn btn-secondary btn-block">立即登录</button>
+            </form>
+        </div>
+
+        <div class="col-sm">
+            <!--美化占位-->
+        </div>
+    </div>
+
+{% endblock %}

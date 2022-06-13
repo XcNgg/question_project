@@ -1,0 +1,69 @@
+{%  extends "base.html" %}
+{%  block title %} 注 册 {%  endblock %}
+
+{%  block body %}
+    <div class="row">
+        <div class="col-sm">
+            <!--美化占位-->
+        </div>
+
+        <div class="col-sm mt-5">
+            <form  method="POST" action="{{ url_for('the_users.regist') }}"> <!-- 更改表单 -->
+                 <div class="form-group">
+                    <label for="exampleInputEmail1">用 户 名</label>
+                    <input type="text" class="form-control" name="username"> <!-- name='username'-->
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">邮 箱</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"> <!-- name='email'-->
+                    <small id="emailHelp" class="form-text text-muted">为了保护您的隐私,您的邮箱仅供本站登录使用</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">密 码</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"><!-- name='password'-->
+                    <small id="emailHelp" class="form-text text-muted">请输入您的密码</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">确认密码 </label>
+                    <input type="password" class="form-control" name="password_confirm" ><!-- name="password_confirm"-->
+                    <small id="emailHelp" class="form-text text-muted">请再次输入您的密码</small>
+                </div>
+
+
+                <div class="form-group ">
+                    <label for="exampleInputEmail1">验证码</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="captcha">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">获取验证码</button>
+                        </div>
+                    </div>
+                     <small id="emailHelp" class="form-text text-muted">点击获取邮箱验证码</small>
+                </div>
+
+
+
+{#                <div class="form-group">#}
+{#                    <label for="exampleInputPassword1">密 码</label>#}
+{#                    <input type="password" class="form-control" >#}
+{#                </div>#}
+
+                <div class="form-group mb-5"></div>
+
+{#                <div class="form-group form-check">#}
+{#                    <input type="checkbox" class="form-check-input" id="exampleCheck1">#}
+{#                    <label class="form-check-label" for="exampleCheck1">Check me out</label>#}
+{#                </div>#}
+
+                <button type="submit" class="btn btn-secondary btn-block">确 认 注 册</button>
+            </form>
+        </div>
+
+        <div class="col-sm">
+            <!--美化占位-->
+        </div>
+    </div>
+{% endblock %}

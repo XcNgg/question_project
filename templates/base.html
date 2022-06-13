@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    {# todo title #}
+    <title>{% block  title %} {% endblock %}</title>
+
+    {# todo meta #}
+    {% block meta %}{% endblock %}
+    {# todo css #}
+    {% block css %}{% endblock %}
+    {# todo js #}
+    {% block js %}{% endblock %}
+
+    <link rel="stylesheet" href={{ url_for('static',filename='css/bootstrap/boot4.css') }}>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/init.css') }}">
+</head>
+
+<body>
+    <!--导 航 条 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #e3f2fd;">
+    <div class="container">
+        <a class="navbar-brand pr-5" href={{ url_for('question.home') }}>小 草 杂 记</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- 首页 发布问答 问答搜索-->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link pr-5" href={{ url_for('question.home') }}>首&nbsp;页<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link " href="#">发布问答</a>
+                </li>
+{#                              <li class="nav-item dropdown">#}
+{#                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">#}
+{#                                  Dropdown#}
+{#                                </a>#}
+{#                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{#                                  <a class="dropdown-item" href="#">Action</a>#}
+{#                                  <a class="dropdown-item" href="#">Another action</a>#}
+{#                                  <div class="dropdown-divider"></div>#}
+{#                                  <a class="dropdown-item" href="#">Something else here</a>#}
+{#                                </div>#}
+{#                              </li>#}
+{#                              <li class="nav-item">#}
+{#                                <a class="nav-link disabled">Disabled</a>#}
+{#                              </li>#}
+                <li class="nav-item ml-5">
+                    <!-- https://v4.bootcss.com/docs/utilities/spacing/ -->
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2 mt-1 pr-5" type="search" placeholder="来啦！老弟！"
+                               aria-label="Search">
+                        <button class="btn btn btn-outline-light my-2 my-sm-0 ml-3 mt-5 " type="submit">搜&nbsp;&nbsp;索
+                        </button>
+                    </form>
+                </li>
+            </ul>
+            {#            <form class="form-inline my-2 my-lg-0">#}
+            {#              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+            {#              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+            {#            </form>#}
+
+            <!-- 右侧 登录 注册-->
+            {#            <ul class="navbar-nav mr-auto">#}
+            <ul class="navbar-nav ">
+                 <!-- 右侧 登录 -->
+                <li class="nav-item  pr-3">
+                    <a class="nav-link " href="{{ url_for('the_users.login') }}">登 录</a>
+                </li>
+                 <!-- 右侧 注册 -->
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ url_for('the_users.regist') }}">注 册</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!--body-->
+<div class="container">
+    {# todo body #}
+    {% block body %}{% endblock %}
+</div>
+
+
+<script src={{ url_for('static',filename='js/jquery.js') }}></script>
+<script src={{ url_for('static',filename='js/popper.js') }}></script>
+<script src={{ url_for('static',filename='js/boot.js') }}></script>
+
+
+
+</body>
+</html>
