@@ -47,3 +47,11 @@ class RegistForm(wtforms.Form):
             # print('当前邮箱已经存在！')
             raise wtforms.ValidationError('当前邮箱已经存在！')
 
+
+
+# 登录表单
+class LoginForm(wtforms.Form):
+    # 邮箱验证
+    email = wtforms.StringField(validators=[email()])
+    # 密码验证
+    password = wtforms.StringField(validators=[Length(min=8,max=20,message='密码长度必须在8-20之间')])

@@ -8,16 +8,16 @@
         </div>
 
         <div class="col-sm mt-5">
-            <form>
+            <form action="{{ url_for("the_users.login") }} " method="POST">
                 <div class="form-group">
                     <label for="exampleInputEmail1">邮 箱</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入您的邮箱" >
+                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入您的邮箱" >
 {#                    <small id="emailHelp" class="form-text text-muted">为全面保护您的隐私，您的邮箱仅供本站登录使用</small>#}
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">密 码</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入您的密码">
+                    <input name="password"  type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入您的密码">
 {#                    <small  class="form-text text-muted"></small>#}
                 </div>
                 <div class="form-group mb-4">

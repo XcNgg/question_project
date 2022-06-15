@@ -8,6 +8,10 @@ from flask import Blueprint
 from flask import render_template
 from flask import redirect
 from flask import url_for
+from flask import jsonify
+from flask import session
+
+
 from project_extension import mail
 from flask_mail import Message
 from models import email_captcha
@@ -17,17 +21,40 @@ from flask import request
 from datetime import datetime
 from project_extension import db
 from blueprints.project_forms import RegistForm
+from blueprints.project_forms import LoginForm
 from models import users_information
+# flask 底层的生成加密函数
 from werkzeug.security import generate_password_hash
-
+# flask 底层的解密函数
+from werkzeug.security import check_password_hash
 
 
 users = Blueprint('the_users',__name__,url_prefix='/users')
 
 # 登录界面
-@users.route('/login')
+@users.route('/login',methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    # 点击GET请求
+    if request.method == 'GET':
+        return render_template('login.html')
+    # POST 请求
+    elif request.method == 'POST':
+        form = LoginForm(request.form)
+        if form.validate():
+            # 获取email
+            email = form.email.data
+            # 获取密码
+            password = form.password.data
+            user = users_information.query.filter_by(email=email).first()
+            # 使用check_password_hash函数来验证密码 函数(hashpassowrd,password)
+            if user and check_password_hash(user.password,password):
+                session['user_id']=user.id
+                return redirect('/')
+            else:
+                return jsonify({"error":"用户名或密码错误！"})
+        else:
+            return
+
 
 
 # 注册界面
@@ -43,7 +70,6 @@ def regist():
             username = form.username.data
             email = form.email.data
             password = form.password.data
-
             user_info = users_information(
                 username=username,
                 # 密码哈希存储
@@ -56,22 +82,24 @@ def regist():
             return redirect(url_for("the_users.login"))
         # 如果验证不通过1
         else:
-            print("validate ERROR".upper())
             return redirect(url_for('the_users.regist'))
 
 
 
 # 发送验证码
-@users.route('/email')
+@users.route('/email',methods=['POST'])
 def send_email():
     # 验证码随机6位
     captcha = ''.join(random.sample(string.ascii_letters + string.digits, 6))
     #
-    recipients = request.args.get('email')
-
+    # 读取表单内的email值
+    recipients = request.form.get('email')
 
     if not recipients:
-        return '请输入邮箱'
+        return jsonify({
+            "code":400,
+            "message":"Miss Email"
+        })
     else:
         try:
             message_dict={
@@ -92,7 +120,10 @@ def send_email():
             mail.send(message)
         except Exception as e:
             print(e)
-            return '发送失败'
+            return jsonify({
+                "code":"400",
+                "message":"ERROR"
+            })
 
         # 导入模型
         email_captcha_model = email_captcha.query.filter_by(email=recipients).first()
@@ -101,7 +132,6 @@ def send_email():
         if email_captcha_model:
             # 将验证码赋值模型
             email_captcha_model.captcha = captcha
-            print(time.time())
             # 将验证码发送时间赋值模型
             email_captcha_model.send_time = int(time.time())
             # 设置超时时间
@@ -121,4 +151,8 @@ def send_email():
             db.session.add(email_captcha_model)
             # 提交模型到数据库
             db.session.commit()
-        return 'Send captcha Scuccess!'
+        return jsonify({
+            "code":200,
+            "status":"Send captcha Scuccess"
+        })
+

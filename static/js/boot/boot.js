@@ -1,5 +1,5 @@
 !function (t, e) {
-    "object" == typeof exports && "undefined" != typeof module ? e(exports, require("jquery")) : "function" == typeof define && define.amd ? define(["exports", "jquery"], e) : e((t = "undefined" != typeof globalThis ? globalThis : t || self).bootstrap = {}, t.jQuery)
+    "object" == typeof exports && "undefined" != typeof module ? e(exports, require("static/js/jquery/jquery")) : "function" == typeof define && define.amd ? define(["exports", "static/js/jquery/jquery"], e) : e((t = "undefined" != typeof globalThis ? globalThis : t || self).bootstrap = {}, t.jQuery)
 }(this, (function (t, e) {
     "use strict";
 
