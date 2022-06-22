@@ -10,6 +10,7 @@ from flask import redirect
 from flask import url_for
 from flask import jsonify
 from flask import session
+from flask import flash
 
 
 from project_extension import mail
@@ -49,11 +50,16 @@ def login():
             # 使用check_password_hash函数来验证密码 函数(hashpassowrd,password)
             if user and check_password_hash(user.password,password):
                 session['user_id']=user.id
+                flash('登录成功!正在跳转到首页...')
+                time.sleep(3)
                 return redirect('/')
             else:
-                return jsonify({"error":"用户名或密码错误！"})
+                flash('邮箱或密码不匹配!')
+                return render_template('login.html')
         else:
-            return
+            flash("密码格式错误!")
+            return render_template('login.html')
+            #  jsonify({"error":"邮箱或密码格式错误!"})
 
 
 
