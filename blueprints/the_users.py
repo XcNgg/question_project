@@ -32,6 +32,7 @@ from werkzeug.security import check_password_hash
 
 users = Blueprint('the_users',__name__,url_prefix='/users')
 
+from flask import g
 # 登录界面
 @users.route('/login',methods=['GET','POST'])
 def login():
@@ -50,8 +51,6 @@ def login():
             # 使用check_password_hash函数来验证密码 函数(hashpassowrd,password)
             if user and check_password_hash(user.password,password):
                 session['user_id']=user.id
-                flash('登录成功!正在跳转到首页...')
-                time.sleep(3)
                 return redirect('/')
             else:
                 flash('邮箱或密码不匹配!')

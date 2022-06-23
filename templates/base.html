@@ -72,16 +72,33 @@
 
             <!-- 右侧 登录 注册-->
             {#            <ul class="navbar-nav mr-auto">#}
-            <ul class="navbar-nav ">
-                 <!-- 右侧 登录 -->
-                <li class="nav-item  pr-3">
-                    <a class="nav-link " href="{{ url_for('the_users.login') }}">登 录</a>
-                </li>
-                 <!-- 右侧 注册 -->
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ url_for('the_users.regist') }}">注 册</a>
-                </li>
-            </ul>
+
+
+            {# 当user 存在的时候 显示当前用户名#}
+            {%  if user %}
+                <ul class="navbar-nav ">
+                     <!-- 右侧  -->
+                    <li class="nav-item  pr-3">
+                        <a class="nav-link " href="#">{{  user.username }}</a>
+                    </li>
+                     <!-- 右侧 注册 -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"> 注 销 </a>
+                    </li>
+                </ul>
+            {# 当user 不存在的时候 需要登录 #}
+            {%  else %}
+                <ul class="navbar-nav ">
+                     <!-- 右侧 登录 -->
+                    <li class="nav-item  pr-3">
+                        <a class="nav-link " href="{{ url_for('the_users.login') }}">登 录</a>
+                    </li>
+                     <!-- 右侧 注册 -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ url_for('the_users.regist') }}">注 册</a>
+                    </li>
+                </ul>
+            {%  endif %}
 
         </div>
     </div>
