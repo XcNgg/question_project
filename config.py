@@ -56,7 +56,7 @@ MAIL_USE_TLS = False
 MAIL_USE_SSL = True
 # 如果后续部署,需要更改为False
 MAIL_DEBUG = True
-#
+#邮箱账号 STMP密钥
 MAIL_USERNAME = "1355523280@qq.com"
 MAIL_PASSWORD = "ojavkiizqurlibgj"
 #默认发件人

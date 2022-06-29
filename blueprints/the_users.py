@@ -94,8 +94,7 @@ def regist():
 @users.route('/logout')
 def logout():
     session.clear()
-    return render_template(url_for('the_users.login'))
-
+    return redirect(url_for("the_users.login"))
 
 
 # 发送验证码
