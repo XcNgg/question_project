@@ -58,6 +58,7 @@ def context_processor():
         return  {"user":g.user}
     else:
         return {}
+    #
 
 
 

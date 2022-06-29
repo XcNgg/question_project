@@ -90,6 +90,13 @@ def regist():
             return redirect(url_for('the_users.regist'))
 
 
+# 注销清除session
+@users.route('/logout')
+def logout():
+    session.clear()
+    return render_template(url_for('the_users.login'))
+
+
 
 # 发送验证码
 @users.route('/email',methods=['POST'])

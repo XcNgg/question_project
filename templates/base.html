@@ -35,11 +35,11 @@
             <!-- 首页 发布问答 问答搜索-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link pr-5" href={{ url_for('question.home') }}>首&nbsp;页<span class="sr-only">(current)</span></a>
+                    <a class="nav-link pr-5" href='/'>首&nbsp;页<span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link " href="#">发布问答</a>
+                    <a class="nav-link " href="{{ url_for('question.public_question') }}">发布问答</a>
                 </li>
 {#                              <li class="nav-item dropdown">#}
 {#                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">#}
@@ -79,11 +79,11 @@
                 <ul class="navbar-nav ">
                      <!-- 右侧  -->
                     <li class="nav-item  pr-3">
-                        <a class="nav-link " href="#">{{  user.username }}</a>
+                        <a class="nav-link " href="#">{{ user.username }}</a>
                     </li>
                      <!-- 右侧 注册 -->
                     <li class="nav-item">
-                        <a class="nav-link " href="#"> 注 销 </a>
+                        <a class="nav-link " href="{{ url_for('the_users.logout') }}"> 注 销 </a>
                     </li>
                 </ul>
             {# 当user 不存在的时候 需要登录 #}
