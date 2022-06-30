@@ -1,3 +1,8 @@
+/*!
+  * Bootstrap v4.6.1 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+*/
 !function (t, e) {
     "object" == typeof exports && "undefined" != typeof module ? e(exports, require("static/js/jquery/jquery")) : "function" == typeof define && define.amd ? define(["exports", "static/js/jquery/jquery"], e) : e((t = "undefined" != typeof globalThis ? globalThis : t || self).bootstrap = {}, t.jQuery)
 }(this, (function (t, e) {
