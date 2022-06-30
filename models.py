@@ -34,3 +34,14 @@ class users_information(db.Model):
     email = db.Column(db.String(100),nullable=False,unique=True)
     # 注册时间不为空
     regits_time = db.Column(db.DateTime,nullable=False,default=datetime.now)
+
+
+
+# 发布问答的模型
+class question_models(db.Model):
+    __tablename__ = 'question'
+    id = db.Column(db.Integer,primary_key= True,autoincrement=True)
+    title = db.Column(db.String(200),nullable=False)
+    content = db.Column(db.Text,nullable=False)
+    author_id = db.Column(db.Integer,db.ForeignKey('users_information.id'))
+    author = db.relationship(users_information,backref="question")

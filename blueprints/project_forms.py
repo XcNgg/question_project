@@ -3,7 +3,7 @@ project_forms.py
     表单文件
 """
 import wtforms
-from models import  email_captcha
+from models import email_captcha
 from models import users_information
 from wtforms.validators import Length,email,regexp,EqualTo
 import time
@@ -55,3 +55,9 @@ class LoginForm(wtforms.Form):
     email = wtforms.StringField(validators=[email()])
     # 密码验证
     password = wtforms.StringField(validators=[Length(min=8,max=20,message='密码长度必须在8-20之间')])
+
+# 发布问答的表单
+class QuestionForm(wtforms.Form):
+    title = wtforms.StringField(validators=[Length(min=3,max=200)])
+    content = wtforms.StringField(validators=[Length(min=5)])
+
