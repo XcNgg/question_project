@@ -83,7 +83,7 @@ def regist():
             )
             db.session.add(user_info)
             db.session.commit()
-            print("NICE")
+            # print("NICE")
             return redirect(url_for("the_users.login"))
         # 如果验证不通过1
         else:
