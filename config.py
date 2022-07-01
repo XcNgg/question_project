@@ -14,21 +14,22 @@ config.py
     SQLALCHEMY_TRACK_MODIFICATIONS=True
     SECRET_KEY="XcNgg_question_project_@2022"
 """
-MYSQLCONFIG={
-    "HOSTNAME":"192.168.200.140",
-    "PORT":3306,
-    "USERNAME":"question",
-    "PASSWORD":"zYjWbRHzD7RGYh7y",
-    "DATABASE":"question_project"
+
+# todo FLASK MYSQL
+MYSQLCONFIG = {
+    "HOSTNAME": "203.25.208.205",
+    "PORT": 3306,
+    "USERNAME": "question_project",
+    "PASSWORD": "zD6sj5dGfJwDHEDX",
+    "DATABASE": "question_project"
 }
 
 # 设置DB_URI
-DB_URI="mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8".format(**MYSQLCONFIG)
-SQLALCHEMY_DATABASE_URI=DB_URI
+DB_URI = "mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8".format(**MYSQLCONFIG)
+SQLALCHEMY_DATABASE_URI = DB_URI
 
-
-SQLALCHEMY_TRACK_MODIFICATIONS=True
-SECRET_KEY="XcNgg_question_project_@2022"
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+SECRET_KEY = "XcNgg_question_project_@2022"
 # print(DB_URI)
 
 
