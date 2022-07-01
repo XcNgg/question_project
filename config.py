@@ -33,7 +33,6 @@ SECRET_KEY = "XcNgg_question_project_@2022"
 # print(DB_URI)
 
 
-
 """ 邮箱验证配置
 MAIL_SERVER : 默认为 ‘localhost’
 MAIL_PORT : 默认为 25
