@@ -4,6 +4,10 @@ config.py
 """
 
 """
+FLASK问答平台，知了传课学习仿写：https://www.bilibili.com/video/BV17r4y1y7jJ?p=31&vd_source=5fce51f437b997bc2572736f7abf0efc
+"""
+
+"""
     MySQL配置
     HOSTNAME="192.168.200.140"
     PORT=3306
