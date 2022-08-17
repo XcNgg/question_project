@@ -5,7 +5,7 @@ project_forms.py
 import wtforms
 from models import email_captcha
 from models import users_information
-from wtforms.validators import Length,email,regexp,EqualTo
+from wtforms.validators import Length, email, regexp, EqualTo, InputRequired
 import time
 
 # 用户注册表单
@@ -54,10 +54,19 @@ class LoginForm(wtforms.Form):
     # 邮箱验证
     email = wtforms.StringField(validators=[email()])
     # 密码验证
-    password = wtforms.StringField(validators=[Length(min=8,max=20,message='密码长度必须在8-20之间')])
+    password = wtforms.StringField(validators=[Length(min=8, max=20, message='密码长度必须在8-20之间')])
 
-# 发布问答的表单
+
+# 发布问题的表单
 class QuestionForm(wtforms.Form):
-    title = wtforms.StringField(validators=[Length(min=3,max=200)])
+    title = wtforms.StringField(validators=[Length(min=3, max=200)])
     content = wtforms.StringField(validators=[Length(min=5)])
 
+
+# 发布评论表单
+
+class AnswerForm(wtforms.Form):
+    # # 是否存在输入 InputRequired 问题ＩＤ
+    # question_id  =wtforms.IntegerField(validators=[InputRequired()])
+    # 评论内容
+    content = wtforms.StringField(validators=[Length(min=1)])

@@ -6,22 +6,27 @@
     text-align: center;
 }
 
-.comment-group-title{
+.comment-group-title {
     margin-top: 20px;
 }
 
-.form-container{
+.form-container {
     width: 500px;
     margin-top: 10px;
     text-align: right;
 }
 
-.comment-group li{
-    border-bottom: 1px solid #eee;
-    padding: 10px 0 ;
+.comment-group {
+    list-style: none;
+    padding: 10px;
 }
 
-.comment-group li .user-info{
+.comment-group li {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.comment-group li .user-info {
     height: 40px;
     line-height: 40px;
     color: #B9B9B9;

@@ -40,11 +40,27 @@ class users_information(db.Model):
 # 发布问答的模型
 class question_models(db.Model):
     __tablename__ = 'question'
-    id = db.Column(db.Integer,primary_key= True,autoincrement=True)
-    title = db.Column(db.String(200),nullable=False)
-    content = db.Column(db.Text,nullable=False)
-    create_time = db.Column(db.DateTime,nullable=False,default=datetime.now)
-    author_id = db.Column(db.Integer,db.ForeignKey('users_information.id'))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    author_id = db.Column(db.Integer, db.ForeignKey('users_information.id'))
 
     # author 就是 users_information
-    author = db.relationship(users_information,backref="question")
+    author = db.relationship(users_information, backref="question")
+
+
+# 发布问答数据库模型
+class answer_models(db.Model):
+    __tablename__ = "answer"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.Text, nullable=False)
+
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('users_information.id'))
+    create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    # 两个外键 反向引用2个模型
+    # 指定排序方式 order_by=create_time.desc() 从大到小
+    question = db.relationship(question_models, backref=db.backref('answers', order_by=create_time.desc()))
+
+    author = db.relationship(users_information, backref='answers')

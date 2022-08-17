@@ -48,18 +48,18 @@
 {#                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
 {#                                  <a class="dropdown-item" href="#">Action</a>#}
 {#                                  <a class="dropdown-item" href="#">Another action</a>#}
-{#                                  <div class="dropdown-divider"></div>#}
-{#                                  <a class="dropdown-item" href="#">Something else here</a>#}
-{#                                </div>#}
-{#                              </li>#}
-{#                              <li class="nav-item">#}
-{#                                <a class="nav-link disabled">Disabled</a>#}
-{#                              </li>#}
+                {#                                  <div class="dropdown-divider"></div>#}
+                {#                                  <a class="dropdown-item" href="#">Something else here</a>#}
+                {#                                </div>#}
+                {#                              </li>#}
+                {#                              <li class="nav-item">#}
+                {#                                <a class="nav-link disabled">Disabled</a>#}
+                {#                              </li>#}
                 <li class="nav-item ml-5">
                     <!-- https://v4.bootcss.com/docs/utilities/spacing/ -->
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="form-inline my-2 my-lg-0" method="get" action="{{ url_for('question.search') }}">
                         <input class="form-control mr-sm-2 mt-1 pr-5" type="search" placeholder="来啦！老弟！"
-                               aria-label="Search">
+                               aria-label="Search" name="keywords">
                         <button class="btn btn btn-outline-light my-2 my-sm-0 ml-3 mt-5 " type="submit">搜&nbsp;&nbsp;索
                         </button>
                     </form>
