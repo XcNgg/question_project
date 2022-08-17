@@ -18,10 +18,10 @@ config.py
 
 # todo FLASK MYSQL
 MYSQLCONFIG = {
-    "HOSTNAME": "203.25.208.205",
+    "HOSTNAME": "117.50.181.130",
     "PORT": 3306,
     "USERNAME": "question_project",
-    "PASSWORD": "zD6sj5dGfJwDHEDX",
+    "PASSWORD": "XtdFGsfnpGGiLfFH",
     "DATABASE": "question_project"
 }
 
