@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}小草问答 - {{ question.title }}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="row" style="margin-top: 50px">
+        <div class="col "></div>
+        <div class="col-8 mt-3" style="background: #fff;padding: 20px">
+                <h3 class="page-title">{{ question.title }}</h3>
+                <p class="question-info pt-3">
+                {#  # author 就是 users_information#}
+                    <span>作者:{{ question.author.username }} | </span>
+                    <span>时间:{{question.create_time }}</span>
+                </p>
+                <hr>
+                <p class="question-content">
+                    {{ question.content }}
+                </p>
+                <hr>
+            </div>
+        <div class="col"></div>
+    </div>
+    <div class="col"></div>
+
+
+
+
+{% endblock %}

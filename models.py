@@ -43,5 +43,8 @@ class question_models(db.Model):
     id = db.Column(db.Integer,primary_key= True,autoincrement=True)
     title = db.Column(db.String(200),nullable=False)
     content = db.Column(db.Text,nullable=False)
+    create_time = db.Column(db.DateTime,nullable=False,default=datetime.now)
     author_id = db.Column(db.Integer,db.ForeignKey('users_information.id'))
+
+    # author 就是 users_information
     author = db.relationship(users_information,backref="question")

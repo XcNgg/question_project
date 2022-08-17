@@ -15,13 +15,17 @@ from blueprints.project_forms import QuestionForm
 from models import question_models
 from project_extension import db
 
+
 question = Blueprint('question', __name__, url_prefix='/')
 
 
 # 首页
 @question.route('/')
 def home():
-    return render_template('index.html')
+    # 读取全部数据并且排序 如果在字段前面加个负号- 则从大到小进行排序
+    questions = question_models.query.order_by('create_time').all()
+    questions = question_models.query.order_by(db.text('-create_time')).all()
+    return render_template('index.html',questions=questions)
 
 
 @question.route('/question/public',methods=["GET","POST"])
@@ -46,3 +50,10 @@ def public_question():
         else:
             flash("标题或内容格式错误!")
             return redirect(url_for("question.public_question"))
+
+
+#
+@question.route('/question/<int:question_id>')
+def question_detail(question_id):
+    question = question_models.query.get(question_id)
+    return render_template('detail.html',question=question)

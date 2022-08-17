@@ -6,13 +6,13 @@
     <div class="row " style="margin-top:20px;">
         <div class="col"></div>
         <div class="col-8">
-            <h1 style="text-align: center" class="pb-3"> 发 布 问 答 </h1>
+            <h2 style="text-align: center" class="pb-3"> 发 布 问 答 </h2>
             <form action="{{ url_for("question.public_question") }}" method="post">
                 <div class="from-group pb-4">
-                    <input type="text" class='form-control' name="title" placeholder="请输入问题标题">
+                    <input type="text" class='form-control' style="height: 55px;font-size: 15px" name="title" placeholder="请输入问题标题">
                 </div>
                 <div class="from-group pt-2">
-                    <textarea name="content" class="form-control" cols="30" rows="13" placeholder="请输入内容"></textarea>
+                    <textarea name="content" style="font-size: 15px" class="form-control" cols="30" rows="15" placeholder="请输入内容"></textarea>
                 </div>
 
                 {% for message in get_flashed_messages() %}
@@ -22,7 +22,7 @@
                 {% endfor %}
 
                 <div class="from-group mt-3" style="text-align: right;">
-                    <button class="btn btn-secondary">发&nbsp;布</button>
+                    <button style="width: 100px; height:40px; font-size: 18px" class="btn btn-secondary">发&nbsp;布</button>
                 </div>
             </form>
         </div>

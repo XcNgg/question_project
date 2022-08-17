@@ -1,4 +1,38 @@
 {%  extends "base.html" %}
 {%  block title %} 小草问答 {%  endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+{%  block body %}
 
-{%  block body %} 首页 {% endblock %}
+<div class="row" style="margin-top: 20px;margin-left: 150px">
+    <div class="col">
+        <div class="col-8">
+            <ul class="question-ul">
+                {% for question in questions %}
+                <li class="mt-2">
+                    <div class="side-question">
+                        <img class="side-question-avatar"src="{{ url_for('static',filename='images/avatar.jpg') }}" alt="">
+                    </div>
+                    <div class="question-main">
+                        <div class="question-tile">
+                            {# 详情页面跳转 #}
+                            <a href="{{ url_for('question.question_detail',question_id=question.id) }}">{{question.title }}</a>
+                        </div>
+                        <div class="question-content">
+                            {{ question.content }}
+                        </div>
+                        <div class="question-detail">
+                            <span class="question-author">{{ question.author.username }}</span>
+                            <span class="question-time">{{ question.create_time }}</span>
+                        </div>
+                    </div>
+                </li>
+            {% endfor  %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
